@@ -17,3 +17,35 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class People(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True, nullable=True)
+    name = db.Column(db.String(250), nullable=True)
+    age = db.Column(db.String(250))
+
+    def __repr__(self):
+        return '<People %r>' % self.id
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "people_name": self.name,
+            "age": self.age
+        }
+
+# class Star(db.Model):
+
+#     id = db.Column(db.Integer, primary_key=True, nullable=True)
+#     name = db.Column(db.String(250), nullable=True)
+#     age = db.Column(db.String(250))
+
+#     def __repr__(self):
+#         return '<Star %r>' % self.id
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "people_name": self.name,
+#             "age": self.age
+#         }
